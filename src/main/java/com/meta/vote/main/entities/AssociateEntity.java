@@ -2,9 +2,9 @@ package com.meta.vote.main.entities;
 
 
 import com.meta.vote.main.utils.DateFormatterUtil;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 

@@ -1,6 +1,5 @@
 package com.meta.vote.main.builder;
 
-import com.meta.vote.main.dto.form.AssociateForm;
 import com.meta.vote.main.dto.form.ScheduleForm;
 import lombok.Builder;
 

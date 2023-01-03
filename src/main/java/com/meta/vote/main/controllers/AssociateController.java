@@ -4,12 +4,12 @@ import com.meta.vote.main.dto.form.AssociateForm;
 import com.meta.vote.main.dto.view.AssociateView;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.services.AssociateService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 

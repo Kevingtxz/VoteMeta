@@ -2,11 +2,6 @@ package com.meta.vote.main.builder;
 
 import com.meta.vote.main.dto.form.AssociateForm;
 import lombok.Builder;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CPF;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 
 @Builder
 public class AssociateFormBuilder {
