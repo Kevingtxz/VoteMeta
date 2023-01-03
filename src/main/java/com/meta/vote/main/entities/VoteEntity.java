@@ -27,14 +27,14 @@ public class VoteEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     @ManyToOne
-    @JoinColumn(name = "ASSOCIATE_ID", nullable = false)
+    @JoinColumn(name = "ASSOCIATE_ID", nullable = false, updatable = false)
     private AssociateEntity associateEntity;
     @ManyToOne
     @JoinColumn(name = "POLL_ID", nullable = false,  updatable = false)
     private PollEntity pollEntity;
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private boolean vote;
 
 

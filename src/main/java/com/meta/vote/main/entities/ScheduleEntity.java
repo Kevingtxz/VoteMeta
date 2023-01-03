@@ -31,7 +31,6 @@ public class ScheduleEntity implements Serializable {
     protected Integer id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = true)
     private String description;
     @ToString.Exclude
     @JsonIgnore
@@ -41,21 +40,15 @@ public class ScheduleEntity implements Serializable {
 
 
     public String getResult() {
-        int simCount = this.pollEntityList.stream().mapToInt(obj -> obj.getVotesSim()).sum(),
-                naoCount = this.pollEntityList.stream().mapToInt(obj -> obj.getVotesNao()).sum();
-        if (simCount > naoCount) {
-            return "A opção SIM está vencendo com "
-                    + simCount + " votos contra "
-                    + naoCount + " da opção NÃO.";
-        } else if (naoCount > simCount) {
-            return "A opção NÃO está vencendo com "
-                    + naoCount + " votos contra "
-                    + simCount + " da opção SIM.";
-        } else {
-            return "A votação está empatada com "
-                    + simCount + " votos SIM e "
-                    + naoCount +" votos NÃO.";
-        }
+        int simCount = this.getVotesSim(), naoCount = this.getVotesNao();
+        return "Opção : " + (simCount > naoCount ? "SIM" : simCount == naoCount ? "EMPATE" : "NÃO")
+                + " a frente; " + simCount + " votos SIM; " + naoCount + " votos NÃO";
+    }
+    public int getVotesSim() {
+        return this.pollEntityList.stream().mapToInt(obj -> obj.getVotesSim()).sum();
+    }
+    public int getVotesNao() {
+        return this.pollEntityList.stream().mapToInt(obj -> obj.getVotesNao()).sum();
     }
 
 }

@@ -44,6 +44,14 @@ public class ScheduleController {
                 .toUri();
         return ResponseEntity.created(uri).build();
     }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(
+            @Valid @RequestBody ScheduleForm form
+            , @PathVariable Integer id) {
+        form.setId(id);
+        service.update(form);
+        return ResponseEntity.noContent().build();
+    }
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(
             @PathVariable Integer id) {

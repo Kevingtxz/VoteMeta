@@ -44,6 +44,15 @@ public class PollController {
                 .toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    // perguntar sobre como fazer validação de só um pedaço do formulário
+    @PatchMapping(value = "/{id}/deadline")
+    public ResponseEntity<Void> update(
+            @Valid @RequestBody PollForm form, @PathVariable Integer id) {
+        form.setId(id);
+        this.service.updateDeadline(form);
+        return ResponseEntity.noContent().build();
+    }
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(
             @PathVariable Integer id) {

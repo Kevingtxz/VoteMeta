@@ -43,13 +43,23 @@ public class ScheduleService {
     public ScheduleView findByIdView(Integer id) {
         return this.toView(this.findById(id));
     }
-    public ScheduleEntity insert(ScheduleForm form) {
-        return this.insert(this.mapper.toEntity(form));
-    }
     public ScheduleEntity insert(ScheduleEntity entity) {
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
+    }
+    public ScheduleEntity insert(ScheduleForm form) {
+        return this.insert(this.mapper.toEntity(form));
+    }
+    public void update(ScheduleEntity entity) {
+        this.repo.save(entity);
+        this.useLog(RestMethodEnum.UPDATE, entity.getId());
+    }
+    public void update(ScheduleForm form) {
+        ScheduleEntity entity = this.findById(form.getId());
+        entity.setName(form.getName());
+        entity.setDescription(form.getDescription());
+        this.update(entity);
     }
     public void delete(Integer id) {
         this.repo.delete(this.findById(id));

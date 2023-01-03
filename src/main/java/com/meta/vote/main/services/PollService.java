@@ -54,6 +54,16 @@ public class PollService {
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
     }
+    public PollEntity update(RestMethodEnum restMethodEnum, PollEntity entity) {
+        this.repo.save(entity);
+        this.useLog(restMethodEnum, entity.getId());
+        return entity;
+    }
+    public void updateDeadline(PollForm form) {
+        PollEntity entity = this.findById(form.getId());
+        entity.setDeadline(form.getDeadline());
+        this.update(RestMethodEnum.PATCH, entity);
+    }
     public void delete(Integer id) {
         this.repo.delete(this.findById(id));
         this.useLog(RestMethodEnum.DELETE, id);

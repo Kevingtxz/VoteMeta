@@ -17,6 +17,8 @@ public class ScheduleView {
     private String name;
     private String description;
     private String result;
+    private int votesSim;
+    private int votesNao;
     private List<PollView> pollViewList;
 
 }
