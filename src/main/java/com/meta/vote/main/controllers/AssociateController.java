@@ -3,7 +3,7 @@ package com.meta.vote.main.controllers;
 import com.meta.vote.main.dto.form.AssociateForm;
 import com.meta.vote.main.dto.view.AssociateView;
 import com.meta.vote.main.entities.AssociateEntity;
-import com.meta.vote.main.services.AssociateService;
+import com.meta.vote.main.services.impl.AssociateServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class AssociateController {
 
 
     @Autowired
-    private AssociateService service;
+    private AssociateServiceImpl service;
 
 
     @GetMapping

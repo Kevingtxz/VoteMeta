@@ -3,7 +3,7 @@ package com.meta.vote.main.controllers;
 import com.meta.vote.main.dto.form.ScheduleForm;
 import com.meta.vote.main.dto.view.ScheduleView;
 import com.meta.vote.main.entities.ScheduleEntity;
-import com.meta.vote.main.services.ScheduleService;
+import com.meta.vote.main.services.impl.ScheduleServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class ScheduleController {
 
 
     @Autowired
-    private ScheduleService service;
+    private ScheduleServiceImpl service;
 
 
     @GetMapping

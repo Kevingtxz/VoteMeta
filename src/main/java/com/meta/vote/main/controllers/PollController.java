@@ -3,7 +3,7 @@ package com.meta.vote.main.controllers;
 import com.meta.vote.main.dto.form.PollForm;
 import com.meta.vote.main.dto.view.PollView;
 import com.meta.vote.main.entities.PollEntity;
-import com.meta.vote.main.services.PollService;
+import com.meta.vote.main.services.impl.PollServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class PollController {
 
 
     @Autowired
-    private PollService service;
+    private PollServiceImpl service;
 
 
     @GetMapping

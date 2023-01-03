@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DBService {
 
+
     @Autowired
     private AssociateService associateService;
     @Autowired
@@ -73,7 +74,6 @@ public class DBService {
         voteForm3.setPollEntityId(pollEntity2.getId());
         voteForm3.setAssociateEntityId(associateEntity3.getId());
         VoteEntity voteEntity3 = this.voteService.insert(voteForm3);
-
     }
 
 }
