@@ -4,17 +4,17 @@ import com.meta.vote.main.dto.form.PollForm;
 import com.meta.vote.main.dto.view.PollView;
 import com.meta.vote.main.entities.PollEntity;
 import com.meta.vote.main.services.impl.PollServiceImpl;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "v1/polls")
+@RequestMapping(value = "api/v1/polls")
 public class PollController {
 
 

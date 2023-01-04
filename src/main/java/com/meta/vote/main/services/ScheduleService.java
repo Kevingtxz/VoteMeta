@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface ScheduleService {
 
 
@@ -21,7 +20,5 @@ public interface ScheduleService {
     void update(ScheduleEntity entity);
     void update(ScheduleForm form);
     void delete(Integer id);
-    ScheduleView toView(ScheduleEntity entity);
-    List<ScheduleView> toViewList(List<ScheduleEntity> listScheduleEntity);
 
 }

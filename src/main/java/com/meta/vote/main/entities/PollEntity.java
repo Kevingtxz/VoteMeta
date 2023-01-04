@@ -2,9 +2,9 @@ package com.meta.vote.main.entities;
 
 
 import com.meta.vote.main.utils.DateFormatterUtil;
-import jakarta.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,17 +40,11 @@ public class PollEntity implements Serializable {
     private List<VoteEntity> voteEntityList = new ArrayList<>();
 
 
-    public int getVotes(String text) {
-        return (int) this.getVoteEntityList()
-                .stream()
-                .filter(obj -> obj.getVote().equals(text)).count();
-
+    public int getCountVotesSim() {
+        return this.getCountVotes("SIM");
     }
-    public int getVotesSim() {
-        return this.getVotes("SIM");
-    }
-    public int getVotesNao() {
-        return this.getVotes("NÃO");
+    public int getCountVotesNao() {
+        return this.getCountVotes("NÃO");
     }
     public String getDeadline() {
         return DateFormatterUtil.DATE_FORMAT.format(this.deadline);
@@ -61,5 +55,12 @@ public class PollEntity implements Serializable {
     public void setDeadline(int deadline) {
         this.deadline =  new Date().getTime() + deadline * 1000;
     }
+    private int getCountVotes(String text) {
+        return (int) this.getVoteEntityList()
+                .stream()
+                .filter(obj -> obj.getVote().equals(text))
+                .count();
 
+    }
+    
 }

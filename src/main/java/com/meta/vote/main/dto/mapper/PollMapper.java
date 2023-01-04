@@ -36,13 +36,13 @@ public class PollMapper {
     public PollEntity toEntity(PollForm form){
         return mapper.map(form, PollEntity.class);
     }
-    public List<PollEntity> toPollEntityList(List<PollForm> listPollForm) {
-        return listPollForm.stream()
+    public List<PollEntity> toEntityList(List<PollForm> listForm) {
+        return listForm.stream()
                 .map(form -> this.toEntity(form))
                 .collect(Collectors.toList());
     }
-    public List<PollView> toViewList(List<PollEntity> listPollEntity) {
-        return listPollEntity.stream()
+    public List<PollView> toViewList(List<PollEntity> listEntity) {
+        return listEntity.stream()
                 .map(entity -> toView(entity))
                 .collect(Collectors.toList());
     }

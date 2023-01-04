@@ -1,12 +1,13 @@
 package com.meta.vote.main.services;
 
 
-import com.meta.vote.main.builder.ScheduleFormBuilder;
+import com.meta.vote.main.builders.ScheduleFormBuilder;
 import com.meta.vote.main.dto.form.ScheduleForm;
 import com.meta.vote.main.dto.mapper.ScheduleMapper;
 import com.meta.vote.main.entities.ScheduleEntity;
 import com.meta.vote.main.repositories.ScheduleRepository;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
+import com.meta.vote.main.services.impl.ScheduleServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,17 +26,18 @@ public class ScheduleServiceTest {
     @Mock
     private ScheduleRepository repo;
     @InjectMocks
-    private ScheduleService service;
+    private ScheduleServiceImpl service;
     @Spy
     private ScheduleMapper mapper;
 
 
     @Test
-    void whenInsertIsCalledWithValidFormThenAEntityBeInserted() {
+    void whenInsertIsCalledWithValidFormThenAEntityBeCreated() {
         ScheduleForm expectedCreatedForm =
                 ScheduleFormBuilder.builder().build().toForm();
         ScheduleEntity expectedCreatedEntity =
                 mapper.toEntity(expectedCreatedForm);
+
         when(this.repo.save(expectedCreatedEntity))
                 .thenReturn(expectedCreatedEntity);
 

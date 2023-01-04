@@ -12,11 +12,13 @@ import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Slf4j
+@Service
 public class PollServiceImpl implements PollService {
 
 
@@ -54,11 +56,6 @@ public class PollServiceImpl implements PollService {
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
     }
-    public PollEntity update(RestMethodEnum restMethodEnum, PollEntity entity) {
-        this.repo.save(entity);
-        this.useLog(restMethodEnum, entity.getId());
-        return entity;
-    }
     public void updateDeadline(PollForm form) {
         PollEntity entity = this.findById(form.getId());
         entity.setDeadline(form.getDeadline());
@@ -67,6 +64,11 @@ public class PollServiceImpl implements PollService {
     public void delete(Integer id) {
         this.repo.delete(this.findById(id));
         this.useLog(RestMethodEnum.DELETE, id);
+    }
+    private PollEntity update(RestMethodEnum restMethodEnum, PollEntity entity) {
+        this.repo.save(entity);
+        this.useLog(restMethodEnum, entity.getId());
+        return entity;
     }
     private void useLog(RestMethodEnum method, Integer id) {
         this.log.info("Object Class: "

@@ -2,9 +2,9 @@ package com.meta.vote.main.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.meta.vote.main.utils.DateFormatterUtil;
-import jakarta.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,15 +40,15 @@ public class ScheduleEntity implements Serializable {
 
 
     public String getResult() {
-        int simCount = this.getVotesSim(), naoCount = this.getVotesNao();
+        int simCount = this.getCountVotesSim(), naoCount = this.getCountVotesNao();
         return "Opção : " + (simCount > naoCount ? "SIM" : simCount == naoCount ? "EMPATE" : "NÃO")
                 + " a frente; " + simCount + " votos SIM; " + naoCount + " votos NÃO";
     }
-    public int getVotesSim() {
-        return this.pollEntityList.stream().mapToInt(obj -> obj.getVotesSim()).sum();
+    public int getCountVotesSim() {
+        return this.pollEntityList.stream().mapToInt(obj -> obj.getCountVotesSim()).sum();
     }
-    public int getVotesNao() {
-        return this.pollEntityList.stream().mapToInt(obj -> obj.getVotesNao()).sum();
+    public int getCountVotesNao() {
+        return this.pollEntityList.stream().mapToInt(obj -> obj.getCountVotesNao()).sum();
     }
 
 }

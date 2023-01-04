@@ -12,11 +12,13 @@ import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Service
 public class ScheduleServiceImpl implements ScheduleService {
 
 
@@ -64,12 +66,12 @@ public class ScheduleServiceImpl implements ScheduleService {
         this.repo.delete(this.findById(id));
         this.useLog(RestMethodEnum.DELETE, id);
     }
-    public ScheduleView toView(ScheduleEntity entity) {
+    private ScheduleView toView(ScheduleEntity entity) {
         ScheduleView view = this.mapper.toView(entity);
         view.setPollViewList(this.pollMapper.toViewList(entity.getPollEntityList()));
         return view;
     }
-    public List<ScheduleView> toViewList(List<ScheduleEntity> listScheduleEntity) {
+    private List<ScheduleView> toViewList(List<ScheduleEntity> listScheduleEntity) {
         return listScheduleEntity.stream()
                 .map(obj -> toView(obj))
                 .collect(Collectors.toList());

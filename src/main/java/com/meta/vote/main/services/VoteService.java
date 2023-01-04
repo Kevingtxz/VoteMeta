@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface VoteService {
+    
 
     List<VoteEntity> findAll();
     List<VoteView> findAllView();

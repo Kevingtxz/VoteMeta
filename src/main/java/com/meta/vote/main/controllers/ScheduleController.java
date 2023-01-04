@@ -4,17 +4,17 @@ import com.meta.vote.main.dto.form.ScheduleForm;
 import com.meta.vote.main.dto.view.ScheduleView;
 import com.meta.vote.main.entities.ScheduleEntity;
 import com.meta.vote.main.services.impl.ScheduleServiceImpl;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "v1/schedules")
+@RequestMapping(value = "api/v1/schedules")
 public class ScheduleController {
 
 

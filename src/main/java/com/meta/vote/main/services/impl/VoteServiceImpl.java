@@ -14,11 +14,13 @@ import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Slf4j
+@Service
 public class VoteServiceImpl implements VoteService {
 
 
@@ -57,8 +59,7 @@ public class VoteServiceImpl implements VoteService {
         if (entity.getPollEntity().isFinished()) {
             throw new DataIntegrityException("This Poll is closed.");
         } else if (this.repo.existsByAssociateEntityAndPollEntityScheduleEntity(
-                entity.getAssociateEntity()
-                , entity.getScheduleEntity())) {
+                entity.getAssociateEntity(), entity.getScheduleEntity())) {
             throw new DataIntegrityException("Associate can't vote two times for the same schedule.");
         }
         this.repo.save(entity);

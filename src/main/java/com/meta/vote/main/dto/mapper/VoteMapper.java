@@ -36,13 +36,13 @@ public class VoteMapper {
     public VoteEntity toEntity(VoteForm form){
         return mapper.map(form, VoteEntity.class);
     }
-    public List<VoteEntity> toVoteEntityList(List<VoteForm> listVoteForm) {
-        return listVoteForm.stream()
+    public List<VoteEntity> toVoteEntityList(List<VoteForm> listForm) {
+        return listForm.stream()
                 .map(form -> this.toEntity(form))
                 .collect(Collectors.toList());
     }
-    public List<VoteView> toViewList(List<VoteEntity> listVoteEntity) {
-        return listVoteEntity.stream()
+    public List<VoteView> toViewList(List<VoteEntity> listEntity) {
+        return listEntity.stream()
                 .map(obj -> toView(obj))
                 .collect(Collectors.toList());
     }

@@ -1,4 +1,4 @@
-package com.meta.vote.main.builder;
+package com.meta.vote.main.builders;
 
 import com.meta.vote.main.dto.form.ScheduleForm;
 import lombok.Builder;

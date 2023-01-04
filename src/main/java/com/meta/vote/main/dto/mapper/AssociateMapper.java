@@ -36,13 +36,13 @@ public class AssociateMapper {
     public AssociateEntity toEntity(AssociateForm form){
         return mapper.map(form, AssociateEntity.class);
     }
-    public List<AssociateEntity> toAssociateEntityList(List<AssociateForm> listAssociateForm) {
-        return listAssociateForm.stream()
+    public List<AssociateEntity> toEntityList(List<AssociateForm> listForm) {
+        return listForm.stream()
                 .map(form -> this.toEntity(form))
                 .collect(Collectors.toList());
     }
-    public List<AssociateView> toViewList(List<AssociateEntity> listAssociateEntity) {
-        return listAssociateEntity.stream()
+    public List<AssociateView> toViewList(List<AssociateEntity> listEntity) {
+        return listEntity.stream()
                 .map(obj -> toView(obj))
                 .collect(Collectors.toList());
     }

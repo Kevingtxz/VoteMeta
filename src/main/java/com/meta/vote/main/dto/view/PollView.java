@@ -14,8 +14,8 @@ public class PollView {
     private Integer id;
     private String deadline;
     private Integer scheduleEntityId;
-    private int votesSim;
-    private int votesNao;
+    private int countVotesSim;
+    private int countVotesNao;
     private boolean finished;
 
 }

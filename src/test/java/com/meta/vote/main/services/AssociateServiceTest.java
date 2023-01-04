@@ -1,12 +1,13 @@
 package com.meta.vote.main.services;
 
 
-import com.meta.vote.main.builder.AssociateFormBuilder;
+import com.meta.vote.main.builders.AssociateFormBuilder;
 import com.meta.vote.main.dto.form.AssociateForm;
 import com.meta.vote.main.dto.mapper.AssociateMapper;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.repositories.AssociateRepository;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
+import com.meta.vote.main.services.impl.AssociateServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,17 +26,18 @@ public class AssociateServiceTest {
     @Mock
     private AssociateRepository repo;
     @InjectMocks
-    private AssociateService service;
+    private AssociateServiceImpl service;
     @Spy
     private AssociateMapper mapper;
 
 
     @Test
-    void whenInsertIsCalledWithValidFormThenAEntityBeInserted() {
+    void whenInsertIsCalledWithValidFormThenAEntityBeCreated() {
         AssociateForm expectedCreatedForm =
                 AssociateFormBuilder.builder().build().toForm();
         AssociateEntity expectedCreatedEntity =
                 mapper.toEntity(expectedCreatedForm);
+
         when(this.repo.save(expectedCreatedEntity))
                 .thenReturn(expectedCreatedEntity);
 
