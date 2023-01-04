@@ -52,6 +52,7 @@ public class AssociateServiceImpl implements AssociateService {
         return this.insert(this.mapper.toEntity(form));
     }
     public AssociateEntity insert(AssociateEntity entity) {
+        entity.setId(null);
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;

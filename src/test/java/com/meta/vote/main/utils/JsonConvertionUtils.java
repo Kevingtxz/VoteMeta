@@ -8,14 +8,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 public class JsonConvertionUtils {
 
 
-    public static String asJsonString(Object bookDTO) {
+    public static String asJsonString(Object form) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
             objectMapper.registerModules(new JavaTimeModule());
-
-            return objectMapper.writeValueAsString(bookDTO);
+            return objectMapper.writeValueAsString(form);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

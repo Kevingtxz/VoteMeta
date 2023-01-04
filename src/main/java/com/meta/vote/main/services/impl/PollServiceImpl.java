@@ -52,6 +52,7 @@ public class PollServiceImpl implements PollService {
     }
     @Transactional
     public PollEntity insert(PollEntity entity) {
+        entity.setId(null);
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;

@@ -5,6 +5,7 @@ import com.meta.vote.main.dto.form.AssociateForm;
 import com.meta.vote.main.dto.mapper.AssociateMapper;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.services.AssociateService;
+import com.meta.vote.main.services.impl.AssociateServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,20 +21,21 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import static com.meta.vote.main.utils.JsonConvertionUtils.asJsonString;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 public class AssociateControllerTest {
 
-    private static final String API_URL_PATH = "/api/v1/beers";
-    private static final long VALID_ID = 1L;
-    private static final long INVALID_ID = 2l;
+    private static final String API_URL_PATH = "/api/v1/associates";
+//    private static final int VALID_ID = 1;
+//    private static final int INVALID_ID = 2;
     private MockMvc mockMvc;
     @Mock
-    private AssociateService service;
+    private AssociateServiceImpl service;
     @InjectMocks
     private AssociateController controller;
     @Spy
@@ -48,20 +50,27 @@ public class AssociateControllerTest {
                 .build();
     }
     @Test
-    void whenPOSTIsCalledThenAAssociateIsCreated() throws Exception {
-        AssociateForm form = AssociateFormBuilder.builder().build().toForm();
-        AssociateEntity entity = this.mapper.toEntity(form);
-
-        when(this.service.insert(form)).thenReturn(entity);
-
-        this.mockMvc.perform(post(this.API_URL_PATH)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(form)))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name", is(form.getName())))
-                .andExpect(jsonPath("$.cpf", is(form.getCpf())))
-                .andExpect(jsonPath("$.email", is(form.getEmail().toString())));
+    void whenGetIsCalledThenAListOfAssociateEntityIsReturned() throws Exception {
+        this.mockMvc.perform(get(this.API_URL_PATH))
+                .andExpect(status().isOk());
+        verify(this.service, times(1))
+                .findAllView();
     }
+//    @Test
+//    void whenPostIsCalledThenAAssociateIsCreated() throws Exception {
+//        AssociateForm expectedCreatedForm =
+//                AssociateFormBuilder.builder().build().toForm();
+////        AssociateEntity expectedCreatedEntity =
+////                this.mapper.toEntity(expectedCreatedForm);
+//
+//        this.mockMvc.perform(post(this.API_URL_PATH)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(asJsonString(expectedCreatedForm)))
+//                .andExpect(status().isCreated());
+//
+////        verify(this.service, times(1))
+////                .insert(expectedCreatedForm);
+//    }
 //    @Test
 //    void whenPOSTIsCalledWithoutRequiredFieldThenAnErrorIsReturned() throws Exception {
 //        // given

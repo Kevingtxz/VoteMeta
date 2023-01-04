@@ -56,6 +56,7 @@ public class VoteServiceImpl implements VoteService {
     }
     @Transactional
     public VoteEntity insert(VoteEntity entity) {
+        entity.setId(null);
         if (entity.getPollEntity().isFinished()) {
             throw new DataIntegrityException("This Poll is closed.");
         } else if (this.repo.existsByAssociateEntityAndPollEntityScheduleEntity(

@@ -45,6 +45,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return this.toView(this.findById(id));
     }
     public ScheduleEntity insert(ScheduleEntity entity) {
+        entity.setId(null);
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
