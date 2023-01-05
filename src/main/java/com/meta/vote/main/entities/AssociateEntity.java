@@ -26,7 +26,7 @@ public class AssociateEntity implements Serializable {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
     @Column(length = 200, nullable = false)
     private String name;
     @Column(unique = true, length = 11, nullable = false, updatable = false)

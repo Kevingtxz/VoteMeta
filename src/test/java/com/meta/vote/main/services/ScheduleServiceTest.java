@@ -37,6 +37,7 @@ public class ScheduleServiceTest {
                 ScheduleFormBuilder.builder().build().toForm();
         ScheduleEntity expectedCreatedEntity =
                 mapper.toEntity(expectedCreatedForm);
+        expectedCreatedEntity.setId(null);
 
         when(this.repo.save(expectedCreatedEntity))
                 .thenReturn(expectedCreatedEntity);

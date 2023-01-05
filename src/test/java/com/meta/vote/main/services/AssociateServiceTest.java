@@ -37,6 +37,7 @@ public class AssociateServiceTest {
                 AssociateFormBuilder.builder().build().toForm();
         AssociateEntity expectedCreatedEntity =
                 mapper.toEntity(expectedCreatedForm);
+        expectedCreatedEntity.setId(null);
 
         when(this.repo.save(expectedCreatedEntity))
                 .thenReturn(expectedCreatedEntity);
@@ -65,7 +66,6 @@ public class AssociateServiceTest {
         verify(this.repo, times(1))
                 .delete(expectedDeletedEntity);
     }
-
 //    @Test
 //    void whenBeerInformedThenItShouldBeCreated() throws BeerAlreadyRegisteredException {
 //        // given

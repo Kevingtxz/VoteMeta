@@ -28,7 +28,7 @@ public class PollEntity implements Serializable {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
     @Setter(AccessLevel.NONE)
     @Column(nullable = false)
     private Long deadline;

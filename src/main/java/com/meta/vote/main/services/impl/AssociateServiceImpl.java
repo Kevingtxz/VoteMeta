@@ -61,7 +61,9 @@ public class AssociateServiceImpl implements AssociateService {
         return entity;
     }
 //    private boolean isValidCpf(String cpf) {
-//        return this.restTemplate.getForObject("CPF_API_URL" + cpf, String.class);
+//        return this.restTemplate
+//                .getForObject("CPF_API_URL" + cpf, String.class)
+//                .contains("isValid");
 //    }
 
     private void useLog(RestMethodEnum method, Integer id) {

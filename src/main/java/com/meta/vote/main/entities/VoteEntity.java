@@ -25,7 +25,7 @@ public class VoteEntity implements Serializable {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
     @ManyToOne
     @JoinColumn(name = "ASSOCIATE_ID", nullable = false, updatable = false)
     private AssociateEntity associateEntity;
