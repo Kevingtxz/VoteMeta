@@ -23,6 +23,6 @@ mvn spring-boot:run
 <h2 id="exam"><img src="https://www.webfx.com/wp-content/themes/fx/assets/img/tools/emoji-cheat-sheet/graphics/emojis/memo.png" width="25"/> Exam</h2>
 https://gitlab.meta.com.br/alexandre.dias/votos
 
-<h2 id="license">![img.png](img.png) License</h2>
+<h2 id="license"><img src="https://visualpharm.com/assets/754/Licence-595b40b75ba036ed117d6538.svg" width="25"/> License</h2>
 
 [MIT](https://choosealicense.com/licenses/mit/)
