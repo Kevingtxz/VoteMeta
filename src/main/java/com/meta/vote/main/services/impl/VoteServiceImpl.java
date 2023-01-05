@@ -1,9 +1,10 @@
 package com.meta.vote.main.services.impl;
 
 
-import com.meta.vote.main.dto.form.VoteForm;
-import com.meta.vote.main.dto.mapper.VoteMapper;
-import com.meta.vote.main.dto.view.VoteView;
+import com.meta.vote.main.dtos.forms.VoteForm;
+import com.meta.vote.main.dtos.mappers.VoteMapper;
+import com.meta.vote.main.dtos.views.VoteView;
+import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.entities.VoteEntity;
 import com.meta.vote.main.repositories.VoteRepository;
 import com.meta.vote.main.services.AssociateService;
@@ -29,8 +30,6 @@ public class VoteServiceImpl implements VoteService {
     @Autowired
     private VoteMapper mapper;
     @Autowired
-    private AssociateService associateService;
-    @Autowired
     private PollService pollService;
 
 
@@ -50,26 +49,30 @@ public class VoteServiceImpl implements VoteService {
     }
     public VoteEntity insert(VoteForm form) {
         VoteEntity entity = this.mapper.toEntity(form);
-        entity.setPollEntity(this.pollService.findById(form.getPollEntityId()));
-        entity.setAssociateEntity(this.associateService.findById(form.getAssociateEntityId()));
+        entity.setPollEntity(this
+                .pollService.findById(form.getPollEntityId()));
+        entity.setAssociateEntity(new AssociateEntity());
+        entity.getAssociateEntity().setId(form.getAssociateEntityId());
         return this.insert(entity);
     }
+    public void delete(Integer id) {
+        this.repo.delete(this.findById(id));
+        this.useLog(RestMethodEnum.DELETE, id);
+    }
     @Transactional
-    public VoteEntity insert(VoteEntity entity) {
+    private VoteEntity insert(VoteEntity entity) {
         entity.setId(null);
         if (entity.getPollEntity().isFinished()) {
             throw new DataIntegrityException("This Poll is closed.");
-        } else if (this.repo.existsByAssociateEntityAndPollEntityScheduleEntity(
-                entity.getAssociateEntity(), entity.getScheduleEntity())) {
+        } else
+        if (this.repo.existsByAssociateEntityIdAndPollEntityScheduleEntityId(
+                entity.getAssociateEntity().getId()
+                , entity.getScheduleEntity().getId())) {
             throw new DataIntegrityException("Associate can't vote two times for the same schedule.");
         }
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
-    }
-    public void delete(Integer id) {
-        this.repo.delete(this.findById(id));
-        this.useLog(RestMethodEnum.DELETE, id);
     }
     private void useLog(RestMethodEnum method, Integer id) {
         this.log.info("Object Class: "

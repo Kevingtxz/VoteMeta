@@ -1,7 +1,7 @@
-package com.meta.vote.main.dto.mapper;
+package com.meta.vote.main.dtos.mappers;
 
-import com.meta.vote.main.dto.form.AssociateForm;
-import com.meta.vote.main.dto.view.AssociateView;
+import com.meta.vote.main.dtos.forms.AssociateForm;
+import com.meta.vote.main.dtos.views.AssociateView;
 import com.meta.vote.main.entities.AssociateEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

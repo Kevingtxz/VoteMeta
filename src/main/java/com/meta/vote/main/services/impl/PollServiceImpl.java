@@ -1,13 +1,13 @@
 package com.meta.vote.main.services.impl;
 
 
-import com.meta.vote.main.dto.form.PollForm;
-import com.meta.vote.main.dto.mapper.PollMapper;
-import com.meta.vote.main.dto.view.PollView;
+import com.meta.vote.main.dtos.forms.PollForm;
+import com.meta.vote.main.dtos.mappers.PollMapper;
+import com.meta.vote.main.dtos.views.PollView;
 import com.meta.vote.main.entities.PollEntity;
+import com.meta.vote.main.entities.ScheduleEntity;
 import com.meta.vote.main.repositories.PollRepository;
 import com.meta.vote.main.services.PollService;
-import com.meta.vote.main.services.ScheduleService;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +26,6 @@ public class PollServiceImpl implements PollService {
     private PollRepository repo;
     @Autowired
     private PollMapper mapper;
-    @Autowired
-    private ScheduleService scheduleService;
 
 
     public List<PollEntity> findAll() {
@@ -46,16 +44,9 @@ public class PollServiceImpl implements PollService {
     }
     public PollEntity insert(PollForm form) {
         PollEntity entity = this.mapper.toEntity(form);
-        entity.setScheduleEntity(
-                this.scheduleService.findById(form.getScheduleEntityId()));
+        entity.setScheduleEntity(new ScheduleEntity());
+        entity.getScheduleEntity().setId(form.getScheduleEntityId());
         return this.insert(entity);
-    }
-    @Transactional
-    public PollEntity insert(PollEntity entity) {
-        entity.setId(null);
-        this.repo.save(entity);
-        this.useLog(RestMethodEnum.CREATE, entity.getId());
-        return entity;
     }
     public void updateDeadline(PollForm form) {
         PollEntity entity = this.findById(form.getId());
@@ -65,6 +56,13 @@ public class PollServiceImpl implements PollService {
     public void delete(Integer id) {
         this.repo.delete(this.findById(id));
         this.useLog(RestMethodEnum.DELETE, id);
+    }
+    @Transactional
+    private PollEntity insert(PollEntity entity) {
+        entity.setId(null);
+        this.repo.save(entity);
+        this.useLog(RestMethodEnum.CREATE, entity.getId());
+        return entity;
     }
     private PollEntity update(RestMethodEnum restMethodEnum, PollEntity entity) {
         this.repo.save(entity);

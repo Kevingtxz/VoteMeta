@@ -1,9 +1,9 @@
-package com.meta.vote.main.config.db_init;
+package com.meta.vote.main.configs.db_init;
 
-import com.meta.vote.main.dto.form.AssociateForm;
-import com.meta.vote.main.dto.form.PollForm;
-import com.meta.vote.main.dto.form.ScheduleForm;
-import com.meta.vote.main.dto.form.VoteForm;
+import com.meta.vote.main.dtos.forms.AssociateForm;
+import com.meta.vote.main.dtos.forms.PollForm;
+import com.meta.vote.main.dtos.forms.ScheduleForm;
+import com.meta.vote.main.dtos.forms.VoteForm;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.entities.PollEntity;
 import com.meta.vote.main.entities.ScheduleEntity;

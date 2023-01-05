@@ -1,7 +1,7 @@
 package com.meta.vote.main.controllers;
 
-import com.meta.vote.main.dto.form.PollForm;
-import com.meta.vote.main.dto.view.PollView;
+import com.meta.vote.main.dtos.forms.PollForm;
+import com.meta.vote.main.dtos.views.PollView;
 import com.meta.vote.main.entities.PollEntity;
 import com.meta.vote.main.services.impl.PollServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

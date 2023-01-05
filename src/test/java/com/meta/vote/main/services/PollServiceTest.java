@@ -2,8 +2,8 @@ package com.meta.vote.main.services;
 
 
 import com.meta.vote.main.builders.PollFormBuilder;
-import com.meta.vote.main.dto.form.PollForm;
-import com.meta.vote.main.dto.mapper.PollMapper;
+import com.meta.vote.main.dtos.forms.PollForm;
+import com.meta.vote.main.dtos.mappers.PollMapper;
 import com.meta.vote.main.entities.PollEntity;
 import com.meta.vote.main.repositories.PollRepository;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;

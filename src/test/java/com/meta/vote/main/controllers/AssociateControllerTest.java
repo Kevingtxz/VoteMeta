@@ -1,10 +1,6 @@
 package com.meta.vote.main.controllers;
 
-import com.meta.vote.main.builders.AssociateFormBuilder;
-import com.meta.vote.main.dto.form.AssociateForm;
-import com.meta.vote.main.dto.mapper.AssociateMapper;
-import com.meta.vote.main.entities.AssociateEntity;
-import com.meta.vote.main.services.AssociateService;
+import com.meta.vote.main.dtos.mappers.AssociateMapper;
 import com.meta.vote.main.services.impl.AssociateServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,17 +10,13 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import static com.meta.vote.main.utils.JsonConvertionUtils.asJsonString;
-import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)

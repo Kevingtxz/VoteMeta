@@ -1,7 +1,7 @@
-package com.meta.vote.main.dto.mapper;
+package com.meta.vote.main.dtos.mappers;
 
-import com.meta.vote.main.dto.form.ScheduleForm;
-import com.meta.vote.main.dto.view.ScheduleView;
+import com.meta.vote.main.dtos.forms.ScheduleForm;
+import com.meta.vote.main.dtos.views.ScheduleView;
 import com.meta.vote.main.entities.ScheduleEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

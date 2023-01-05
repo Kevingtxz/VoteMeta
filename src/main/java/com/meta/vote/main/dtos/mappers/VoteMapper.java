@@ -1,7 +1,7 @@
-package com.meta.vote.main.dto.mapper;
+package com.meta.vote.main.dtos.mappers;
 
-import com.meta.vote.main.dto.form.VoteForm;
-import com.meta.vote.main.dto.view.VoteView;
+import com.meta.vote.main.dtos.forms.VoteForm;
+import com.meta.vote.main.dtos.views.VoteView;
 import com.meta.vote.main.entities.VoteEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

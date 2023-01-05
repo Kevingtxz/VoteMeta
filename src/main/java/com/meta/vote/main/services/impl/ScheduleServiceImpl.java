@@ -1,10 +1,10 @@
 package com.meta.vote.main.services.impl;
 
 
-import com.meta.vote.main.dto.form.ScheduleForm;
-import com.meta.vote.main.dto.mapper.PollMapper;
-import com.meta.vote.main.dto.mapper.ScheduleMapper;
-import com.meta.vote.main.dto.view.ScheduleView;
+import com.meta.vote.main.dtos.forms.ScheduleForm;
+import com.meta.vote.main.dtos.mappers.PollMapper;
+import com.meta.vote.main.dtos.mappers.ScheduleMapper;
+import com.meta.vote.main.dtos.views.ScheduleView;
 import com.meta.vote.main.entities.ScheduleEntity;
 import com.meta.vote.main.repositories.ScheduleRepository;
 import com.meta.vote.main.services.ScheduleService;
@@ -44,18 +44,8 @@ public class ScheduleServiceImpl implements ScheduleService {
     public ScheduleView findByIdView(Integer id) {
         return this.toView(this.findById(id));
     }
-    public ScheduleEntity insert(ScheduleEntity entity) {
-        entity.setId(null);
-        this.repo.save(entity);
-        this.useLog(RestMethodEnum.CREATE, entity.getId());
-        return entity;
-    }
     public ScheduleEntity insert(ScheduleForm form) {
         return this.insert(this.mapper.toEntity(form));
-    }
-    public void update(ScheduleEntity entity) {
-        this.repo.save(entity);
-        this.useLog(RestMethodEnum.UPDATE, entity.getId());
     }
     public void update(ScheduleForm form) {
         ScheduleEntity entity = this.findById(form.getId());
@@ -66,6 +56,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     public void delete(Integer id) {
         this.repo.delete(this.findById(id));
         this.useLog(RestMethodEnum.DELETE, id);
+    }
+    private ScheduleEntity insert(ScheduleEntity entity) {
+        entity.setId(null);
+        this.repo.save(entity);
+        this.useLog(RestMethodEnum.CREATE, entity.getId());
+        return entity;
+    }
+    private void update(ScheduleEntity entity) {
+        this.repo.save(entity);
+        this.useLog(RestMethodEnum.UPDATE, entity.getId());
     }
     private ScheduleView toView(ScheduleEntity entity) {
         ScheduleView view = this.mapper.toView(entity);

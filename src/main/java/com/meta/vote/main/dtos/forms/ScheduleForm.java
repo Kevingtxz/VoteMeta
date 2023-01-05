@@ -1,4 +1,4 @@
-package com.meta.vote.main.dto.form;
+package com.meta.vote.main.dtos.forms;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

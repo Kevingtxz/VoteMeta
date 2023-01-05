@@ -1,4 +1,4 @@
-package com.meta.vote.main.config.db_init;
+package com.meta.vote.main.configs.db_init;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

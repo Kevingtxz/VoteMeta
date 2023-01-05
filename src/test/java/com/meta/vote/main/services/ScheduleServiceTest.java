@@ -2,8 +2,8 @@ package com.meta.vote.main.services;
 
 
 import com.meta.vote.main.builders.ScheduleFormBuilder;
-import com.meta.vote.main.dto.form.ScheduleForm;
-import com.meta.vote.main.dto.mapper.ScheduleMapper;
+import com.meta.vote.main.dtos.forms.ScheduleForm;
+import com.meta.vote.main.dtos.mappers.ScheduleMapper;
 import com.meta.vote.main.entities.ScheduleEntity;
 import com.meta.vote.main.repositories.ScheduleRepository;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;

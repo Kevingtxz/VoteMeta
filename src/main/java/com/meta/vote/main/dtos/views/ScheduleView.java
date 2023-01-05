@@ -1,4 +1,4 @@
-package com.meta.vote.main.dto.view;
+package com.meta.vote.main.dtos.views;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

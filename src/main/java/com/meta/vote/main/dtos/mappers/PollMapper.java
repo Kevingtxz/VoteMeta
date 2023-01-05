@@ -1,7 +1,7 @@
-package com.meta.vote.main.dto.mapper;
+package com.meta.vote.main.dtos.mappers;
 
-import com.meta.vote.main.dto.form.PollForm;
-import com.meta.vote.main.dto.view.PollView;
+import com.meta.vote.main.dtos.forms.PollForm;
+import com.meta.vote.main.dtos.views.PollView;
 import com.meta.vote.main.entities.PollEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

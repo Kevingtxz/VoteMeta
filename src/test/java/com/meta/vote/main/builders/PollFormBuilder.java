@@ -1,6 +1,6 @@
 package com.meta.vote.main.builders;
 
-import com.meta.vote.main.dto.form.PollForm;
+import com.meta.vote.main.dtos.forms.PollForm;
 import lombok.Builder;
 
 @Builder
