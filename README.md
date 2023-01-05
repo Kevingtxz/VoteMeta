@@ -9,7 +9,7 @@
 </div>
 
 <h2 id="description">📚 Description</h2>
-Java Spring Web Application for election of a company
+API for company election process
 <h2 id="packages">📦 Packages</h2>
 Main libraries: spring-boot-starter-data-jpa, spring-boot-starter-validation, spring-boot-starter-web, spring-boot-devtools, h2, lombok, spring-boot-starter-test, modelmapper, springdoc-openapi-ui
 
