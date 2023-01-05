@@ -15,8 +15,14 @@ Main libraries: spring-boot-starter-data-jpa, spring-boot-starter-validation, sp
 
 <h2 id="usage">🚀 Usage</h2>
 
-After~~~
+run the commands
+``` 
+cd vote/
+mvn spring-boot:run
+```
+<h2 id="exam"><img src="https://www.webfx.com/wp-content/themes/fx/assets/img/tools/emoji-cheat-sheet/graphics/emojis/memo.png" width="25"/> Exam</h2>
+https://gitlab.meta.com.br/alexandre.dias/votos
 
-<h2 id="license">🚀 License</h2>
+<h2 id="license">![img.png](img.png) License</h2>
 
 [MIT](https://choosealicense.com/licenses/mit/)
