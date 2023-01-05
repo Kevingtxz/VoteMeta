@@ -7,11 +7,13 @@ import com.meta.vote.main.dtos.views.AssociateView;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.repositories.AssociateRepository;
 import com.meta.vote.main.services.AssociateService;
+import com.meta.vote.main.services.exceptions.DataIntegrityException;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ import java.util.List;
 public class AssociateServiceImpl implements AssociateService {
 
 
+//    @Autowired
+//    private RestTemplate restTemplate;
     @Autowired
     private AssociateRepository repo;
     @Autowired
@@ -49,10 +53,17 @@ public class AssociateServiceImpl implements AssociateService {
     }
     private AssociateEntity insert(AssociateEntity entity) {
         entity.setId(null);
+//        if (this.isValidCpf(entity.getCpf())) {
+//            throw new DataIntegrityException("CPF must be valid");
+//        }
         this.repo.save(entity);
         this.useLog(RestMethodEnum.CREATE, entity.getId());
         return entity;
     }
+//    private boolean isValidCpf(String cpf) {
+//        return this.restTemplate.getForObject("CPF_API_URL" + cpf, String.class);
+//    }
+
     private void useLog(RestMethodEnum method, Integer id) {
         this.log.info("Object Class: "
                 + this.getClass().getName().substring(0, this.getClass().getName().length()-7)
