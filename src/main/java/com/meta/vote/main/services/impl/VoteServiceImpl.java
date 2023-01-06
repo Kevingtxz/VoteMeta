@@ -7,7 +7,6 @@ import com.meta.vote.main.dtos.views.VoteView;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.entities.VoteEntity;
 import com.meta.vote.main.repositories.VoteRepository;
-import com.meta.vote.main.services.AssociateService;
 import com.meta.vote.main.services.PollService;
 import com.meta.vote.main.services.VoteService;
 import com.meta.vote.main.services.exceptions.DataIntegrityException;

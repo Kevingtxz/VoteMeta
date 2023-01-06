@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface VoteRepository extends JpaRepository<VoteEntity, Integer> {
 
 
-
     @Transactional(readOnly = true)
     boolean existsByAssociateEntityIdAndPollEntityScheduleEntityId(
             Integer associateEntityId, Integer scheduleEntityId);

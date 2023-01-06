@@ -7,13 +7,11 @@ import com.meta.vote.main.dtos.views.AssociateView;
 import com.meta.vote.main.entities.AssociateEntity;
 import com.meta.vote.main.repositories.AssociateRepository;
 import com.meta.vote.main.services.AssociateService;
-import com.meta.vote.main.services.exceptions.DataIntegrityException;
 import com.meta.vote.main.services.exceptions.ObjectNotFoundException;
 import com.meta.vote.main.utils.enums.RestMethodEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
