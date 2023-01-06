@@ -1,6 +1,7 @@
 package com.meta.vote.main.controllers;
 
 import com.meta.vote.main.dtos.mappers.AssociateMapper;
+import com.meta.vote.main.services.AssociateService;
 import com.meta.vote.main.services.impl.AssociateServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ public class AssociateControllerTest {
 //    private static final int INVALID_ID = 2;
     private MockMvc mockMvc;
     @Mock
-    private AssociateServiceImpl service;
+    private AssociateService service;
     @InjectMocks
     private AssociateController controller;
     @Spy

@@ -3,6 +3,7 @@ package com.meta.vote.main.controllers;
 import com.meta.vote.main.dtos.forms.VoteForm;
 import com.meta.vote.main.dtos.views.VoteView;
 import com.meta.vote.main.entities.VoteEntity;
+import com.meta.vote.main.services.VoteService;
 import com.meta.vote.main.services.impl.VoteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class VoteController {
 
 
     @Autowired
-    private VoteServiceImpl service;
+    private VoteService service;
 
 
     @GetMapping
